@@ -3,1160 +3,1066 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mithali Kunder - Creative Designer & Developer</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <title>Mithali Kunder - Creative Designer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #0D1B2A;
-            --secondary: #1B263B;
-            --accent: #00B4D8;
-            --accent-light: #90E0EF;
-            --text-primary: #FFFFFF;
-            --text-secondary: #B0BEC5;
-            --text-muted: #78909C;
-            --surface: #263238;
-            --surface-light: #37474F;
-            --gradient-primary: linear-gradient(135deg, #0D1B2A 0%, #1B263B 100%);
-            --gradient-accent: linear-gradient(135deg, #042c34 0%, #0077B6 100%);
-            --gradient-card: linear-gradient(135deg, rgba(38, 50, 56, 0.8) 0%, rgba(55, 71, 79, 0.6) 100%);
-        }
-
+        /* CSS Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #4FC3F7;
+            --secondary: #29B6F6;
+            --accent: #81D4FA;
+            --dark-blue: #0277BD;
+            --light-blue: #B3E5FC;
+            --bg-light: #E1F5FE;
+            --bg-dark: #01579B;
+            --text-dark: #0D47A1;
+            --text-light: #FFFFFF;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+            color: var(--text-dark);
             overflow-x: hidden;
-            background: var(--primary);
-            color: var(--text-primary);
-            line-height: 1.6;
         }
 
-        .hero-section {
-            min-height: 100vh;
-            background: var(--gradient-primary);
-            position: relative;
-            display: flex;
-            padding-top: 70px; /* Add this line */
-            min-height: calc(100vh - 70px);
-            align-items: center;
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(179, 229, 252, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(79, 195, 247, 0.2);
+            border-bottom: 2px solid rgba(79, 195, 247, 0.3);
         }
-
-        .hero-section::before {
+        
+        nav::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(144, 224, 239, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            padding-top: 30px;
-            position: relative;
-            z-index: 2;
-            text-align: center;
             width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
         }
 
-        .hero-title {
-            font-size: 1.2rem;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            font-size: 28px;
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease 0.2s forwards;
+            position: relative;
+            text-shadow: 0 0 30px rgba(79, 195, 247, 0.3);
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(79, 195, 247, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(79, 195, 247, 0.8)); }
         }
 
-        .hero-subtitle {
-            font-size: 1.4rem;
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
             font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease 0.4s forwards;
-        }
-
-        .hero-description {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease 0.6s forwards;
-        }
-
-        .profile-image {
-            width: 180px; /* Reduced from 200px */
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--accent);
-            margin: 0 auto 1.5rem;
-            display: block;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease 0.5s forwards;
-            box-shadow: 0 10px 30px rgba(0, 180, 216, 0.4);
-        }
-
-        .btn-primary-custom {
-            background: var(--gradient-accent);
-            border: none;
-            padding: 16px 40px;
-            font-weight: 600;
-            border-radius: 12px;
-            color: white;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
             transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1s ease 0.8s forwards;
-            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.3);
-        }
-
-        .btn-primary-custom:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0, 180, 216, 0.4);
-            color: white;
-        }
-
-        .btn-secondary-custom {
-            background: transparent;
-            border: 2px solid var(--accent);
-            padding: 14px 38px;
-            font-weight: 600;
-            border-radius: 12px;
-            color: var(--accent);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
-            margin-left: 20px;
-        }
-
-        .btn-secondary-custom:hover {
-            background: var(--accent);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section {
-            padding: 100px 0;
             position: relative;
         }
 
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 4rem;
-            color: var(--text-primary);
-            position: relative;
-        }
-
-        .section-title::after {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient-accent);
-            border-radius: 2px;
-        }
-
-        .about-section {
-            background: var(--secondary);
-        }
-
-        .skill-card {
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem 2rem;
-            border-radius: 16px;
-            text-align: center;
-            transition: all 0.4s ease;
-            margin-bottom: 2rem;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
+            bottom: -5px;
             left: 0;
-            right: 0;
-            height: 3px;
-            background: var(--gradient-accent);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            border-color: var(--accent);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover .skill-icon {
-            color: var(--accent-light);
-            transform: scale(1.1);
-        }
-
-        .skill-card h4 {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .skill-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .projects-section {
+            width: 0;
+            height: 2px;
             background: var(--primary);
+            transition: width 0.3s ease;
         }
 
-        .project-card {
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            margin-bottom: 2rem;
-            height: 100%;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-            border-color: var(--accent);
-        }
-
-        .project-header {
-            background: var(--gradient-accent);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .project-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        .project-header p {
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0;
-        }
-
-        .project-body {
-            padding: 2rem;
-        }
-
-        .project-metrics {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .project-metrics span {
-            display: flex;
-            align-items: center;
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
             gap: 6px;
+            cursor: pointer;
         }
-        .project-card {
-    margin-bottom: 30px; 
-}
-.projects-section .col-lg-6,
-.projects-section .col-lg-4 {
-    margin-bottom: 30px;
-}
 
-
-        .tech-tag {
-            background: linear-gradient(135deg, var(--accent) 0%, #0077B6 100%);
-            color: white;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            margin: 4px 6px 4px 0;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--text-dark);
             transition: all 0.3s ease;
         }
 
-        .tech-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 180, 216, 0.3);
-        }
-
-        .project-features div {
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            justify-content: center;
+            padding: 120px 5% 80px;
         }
 
-        .project-actions {
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1400px;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 24px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        .hero-buttons {
             display: flex;
-            gap: 12px;
-            margin-top: 1.5rem;
+            gap: 20px;
         }
 
-        .btn-project {
-            padding: 10px 20px;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        .btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
             text-decoration: none;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .btn-project-primary {
-            background: var(--gradient-accent);
-            color: white;
+            gap: 10px;
+            cursor: pointer;
             border: none;
         }
 
-        .btn-project-secondary {
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(79, 195, 247, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(79, 195, 247, 0.5);
+        }
+
+        .btn-secondary {
             background: transparent;
-            color: var(--accent);
-            border: 1px solid var(--accent);
+            border: 2px solid var(--primary);
+            color: var(--primary);
         }
 
-        .btn-project:hover {
-            transform: translateY(-2px);
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--text-light);
         }
 
-        .experience-section {
-            background: var(--secondary);
-        }
-
-        .timeline {
+        .hero-image-wrapper {
             position: relative;
-            padding: 2rem 0;
-            max-width: 800px;
+            width: 100%;
+            height: 600px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(1, 87, 155, 0.2);
+            background: white;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-dark);
+            opacity: 0.7;
+            max-width: 600px;
             margin: 0 auto;
         }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--accent);
-            transform: translateX(-50%);
+        /* Skills Section */
+        #skills {
+            background: white;
         }
 
-        .timeline-item {
-            position: relative;
-            margin: 4rem 0;
-        }
-
-        .timeline-content {
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: 16px;
-            width: 45%;
-            margin-left: 55%;
-            transition: all 0.3s ease;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 0;
-        }
-
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 16px;
-            height: 16px;
-            background: var(--accent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 0 4px var(--secondary), 0 0 0 8px rgba(0, 180, 216, 0.2);
-        }
-
-        .timeline-content h4 {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content h6 {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-content ul {
-            color: var(--text-secondary);
-            padding-left: 1.2rem;
-        }
-
-        .timeline-content li {
-            margin-bottom: 8px;
-        }
-
-        .contact-section {
-            background: var(--primary);
-            position: relative;
-        }
-
-        .contact-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(0, 180, 216, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(144, 224, 239, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .contact-card {
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 4rem 3rem;
-            border-radius: 24px;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .contact-item h6 {
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--accent-light);
-        }
-
-        .social-links {
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 2rem;
-            margin: 0 15px;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--accent);
-            transform: translateY(-3px);
-        }
-
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 27, 42, 0.95);
-            backdrop-filter: blur(20px);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--text-primary) !important;
-        }
-
-        .nav-link {
-            color: var(--text-secondary) !important;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 8px 16px !important;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 16px;
-            right: 16px;
-            height: 2px;
-            background: var(--accent);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            transform: scaleX(1);
-        }
-
-        .nav-link:hover {
-            color: var(--accent) !important;
-        }
-
-        .about-content {
-            color: var(--text-secondary);
-        }
-
-        .about-content h3 {
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .education-info h5 {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .certifications h5 {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        .cert-item {
-            background: var(--surface) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .cert-item:hover {
-            transform: translateY(-2px);
-            border-color: var(--accent);
-        }
-
-        /* Canva Work Section */
-        .canva-section {
-            background: var(--secondary);
-        }
-
-        .canva-gallery {
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .canva-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
+        .skill-card {
+            background: linear-gradient(135deg, #E1F5FE, #B3E5FC);
+            border: 2px solid var(--light-blue);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .canva-item img {
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(79, 195, 247, 0.3);
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: var(--dark-blue);
+        }
+
+        .skill-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .skill-card p {
+            color: var(--text-dark);
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* Education Section */
+        #education {
+            background: white;
+        }
+
+        .education-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            gap: 30px;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #E1F5FE, #B3E5FC);
+            border: 2px solid var(--light-blue);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(79, 195, 247, 0.3);
+            border-color: var(--primary);
+        }
+
+        .education-card h3 {
+            font-size: 24px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        /* Portfolio Gallery - FIXED */
+        #portfolio {
+            background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 30px;
+            background: white;
+            border: 2px solid var(--light-blue);
+            color: var(--text-dark);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
+            border-color: transparent;
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+            background: white;
+            box-shadow: 0 10px 30px rgba(1, 87, 155, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(1, 87, 155, 0.2);
+        }
+
+        .gallery-item-placeholder {
             width: 100%;
-            height: 250px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
 
-        .canva-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .canva-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .canva-overlay {
+        .gallery-overlay {
             position: absolute;
-            bottom: 0;
+            top: 0;
             left: 0;
-            right: 0;
-            background: rgba(13, 27, 42, 0.8);
-            padding: 15px;
-            transform: translateY(100%);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.95), rgba(1, 87, 155, 0.95));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .gallery-overlay p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        .gallery-overlay .btn {
+            padding: 10px 25px;
+            font-size: 14px;
+            background: white;
+            color: var(--dark-blue);
+        }
+
+        /* Tools Section */
+        #tools {
+            background: white;
+        }
+
+        .tools-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tools-category {
+            margin-bottom: 60px;
+        }
+
+        .tools-category h3 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: var(--dark-blue);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-item {
+            background: linear-gradient(135deg, #E1F5FE, #B3E5FC);
+            border: 2px solid var(--light-blue);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-item:hover {
+            background: linear-gradient(135deg, var(--light-blue), var(--accent));
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(79, 195, 247, 0.3);
+        }
+
+        .tool-item i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+        }
+
+        .tool-item p {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: linear-gradient(135deg, #E1F5FE 0%, #B3E5FC 100%);
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 50px 0;
+        }
+
+        .contact-item {
+            background: white;
+            border: 2px solid var(--light-blue);
+            border-radius: 20px;
+            padding: 30px 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 195, 247, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(79, 195, 247, 0.3);
+        }
+
+        .contact-item i {
+            font-size: 35px;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
             transition: transform 0.3s ease;
         }
-
-        .canva-item:hover .canva-overlay {
-            transform: translateY(0);
+        
+        .contact-item:hover i {
+            transform: scale(1.1) rotate(5deg);
         }
 
-        .canva-overlay h5 {
-            color: var(--accent);
-            margin-bottom: 5px;
+        .contact-item h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
         }
 
-        .canva-overlay p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0;
+        .contact-item a {
+            color: var(--text-dark);
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            word-break: break-word;
         }
 
-        @media (max-width: 768px) {
-            .hero-title { 
-                font-size: 2.8rem; 
-            }
-            .section-title { 
-                font-size: 2.2rem; 
-            }
-            .timeline::before { 
-                left: 20px; 
-            }
-            .timeline-content { 
-                width: calc(100% - 60px); 
-                margin-left: 60px !important; 
-            }
-            .timeline-dot { 
-                left: 20px; 
-            }
-            .project-metrics {
-                flex-direction: column;
-                gap: 8px;
-            }
-            .btn-secondary-custom {
-                margin-left: 0;
-                margin-top: 15px;
-            }
-            .hero-description {
-                font-size: 1rem;
-            }
-            .profile-image {
-                width: 200px;
-                height: 200px;
-            }
-            .hero-section {
-                padding-top: 60px;
-                min-height: calc(100vh - 60px);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .animate-on-scroll.animate {
+        .contact-item a:hover {
+            color: var(--primary);
             opacity: 1;
-            transform: translateY(0);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--dark-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        
+        .social-links a:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) rotate(360deg);
+            box-shadow: 0 10px 30px rgba(79, 195, 247, 0.5);
+        }
+        
+        .social-links a i {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 5%;
+            text-align: center;
+            background: white;
+            border-top: 2px solid var(--light-blue);
+        }
+
+        footer p {
+            color: var(--text-dark);
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 48px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-image-wrapper {
+                height: 400px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                width: 100%;
+                padding: 40px;
+                gap: 20px;
+                transition: left 0.3s ease;
+                box-shadow: 0 10px 30px rgba(1, 87, 155, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .section-header h2 {
+                font-size: 40px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .hero-text .subtitle {
+                font-size: 20px;
+            }
+
+            .hero-text p {
+                font-size: 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="#home">Mithali Kunder</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">MK.</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="hero-content">
-                <img src="./img/P230970114_MithaliKunder.jpg" alt="Mithali Kunder" class="profile-image">
-                <h1 class="hero-title">Creative Designer<br>& Developer</h1>
-                <p class="hero-subtitle">Turning Ideas Into Impactful Digital Experiences</p>
-                <p class="hero-description">I blend design, technology, and strategy to create solutions that connect with audiences and achieve business goals. Let's bring your vision to life!</p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn-primary-custom">
-                        <i class="fas fa-paper-plane"></i>
-                        Let's Create Together
-                    </a>
-                    <a href="#projects" class="btn-secondary-custom">
-                        <i class="fas fa-eye"></i>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Creative Designer & Visual Storyteller</h1>
+                <div class="subtitle">Turning Ideas Into Beautiful Realities</div>
+                <p>I'm Mithali Kunder, a passionate creative designer who transforms concepts into stunning visual experiences. From graphic design to digital art, I bring imagination to life through colors, shapes, and innovative thinking.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
                         View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i>
+                        Let's Talk
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="section about-section">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">About Me</h2>
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about-content animate-on-scroll">
-                        <h3>Creative Professional</h3>
-                        <p class="lead mb-4">Creative professional with a passion for turning ideas into impactful visuals and engaging digital experiences. Skilled at blending design, technology, and strategy to deliver solutions that connect with audiences and achieve business goals.</p>
-                        <p class="mb-4">My expertise spans across design, development, and strategy, enabling me to deliver comprehensive solutions that not only look great but also drive results. I thrive in collaborative environments and love working on diverse projects.</p>
-                        <div class="education-info">
-                            <h5 class="mb-3">Education</h5>
-                            <div class="mb-2"><strong>Master of Computer Applications (MCA)</strong></div>
-                            <div class="mb-3 text-white">Manipal Institute of Technology | 2023 – 2025</div>
-                            <div class="mb-2"><strong>Bachelor of Computer Applications (BCA)</strong></div>
-                            <div class="text-white">Mahatma Gandhi Memorial College, Udupi | 2020 – 2023</div>
-                        </div>
-                    </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <img src="./img/profile.png" alt="Mithali Kunder">
                 </div>
-                <div class="col-lg-6">
-    <div class="certifications animate-on-scroll">
-        <h5 class="mb-4">Certifications</h5>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Foundations of Project Management – Coursera
-        </div>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Developer and Technology Job Simulation – Accenture Forage
-        </div>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Deloitte Australia Cyber Security Virtual Experience – Forage
-        </div>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            GenAI Powered Data Analytics – Tata iQ via Forage
-        </div>
-
-        <!-- New Certificates -->
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Sigma Bootcamp Certified – January 2025
-        </div>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Big Data Certification – IBM via Coursera (Oct 2024)
-        </div>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Build a Webpage with HTML & CSS – Coursera
-        </div>
-
-        <div class="cert-item mb-3 p-3">
-            <i class="fas fa-certificate text-warning me-2"></i>
-            Cloud Computing Basics (Cloud 101) – Coursera
-        </div>
-    </div>
-</div>
-
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Skills & Expertise</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h4>Design & Creativity</h4>
-                        <p>Visual Design, Branding, Marketing Collateral, UI/UX Principles, Figma, Canva</p>
-                    </div>
+    <section id="skills">
+        <div class="section-header">
+            <h2>What I Do Best</h2>
+            <p>Crafting experiences that captivate and inspire</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-utensils"></i>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h4>Web Development</h4>
-                        <p>HTML, CSS, Bootstrap, MySQL, Laravel, PHP, JavaScript</p>
-                    </div>
+                <h3>Food Menu Design</h3>
+                <p>Creating visually appealing and functional menu designs that enhance dining experiences and drive sales</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-gem"></i>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h4>Cloud & Tools</h4>
-                        <p>Google Cloud Platform, GitHub, VS Code, Android Studio</p>
-                    </div>
+                <h3>Jewellery Poster Design</h3>
+                <p>Designing elegant and luxurious posters that showcase jewellery collections with sophistication</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-plane"></i>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <h4>Data & Analytics</h4>
-                        <p>SQL, Data Visualization, Basic Statistics</p>
-                    </div>
+                <h3>Travel Website Design</h3>
+                <p>Creating immersive travel websites that inspire wanderlust and provide seamless booking experiences</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-code"></i>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4>Mobile Development</h4>
-                        <p>Android Studio, Java, SQLite</p>
-                    </div>
+                <h3>Frontend Web Design</h3>
+                <p>Building responsive and interactive websites with modern frameworks and clean, efficient code</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-palette"></i>
                 </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="skill-card animate-on-scroll">
-                        <div class="skill-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>Core Competencies</h4>
-                        <p>Communication, Teamwork, Project Management, Time Management, Adaptability</p>
-                    </div>
+                <h3>Graphic Design</h3>
+                <p>Crafting compelling visual identities, logos, and marketing materials that tell unique brand stories</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h3>Motion Design</h3>
+                <p>Creating dynamic animations and motion graphics that bring brands and stories to life</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Custom Design</h3>
+                <p>Tailored design solutions for unique requirements, bringing your specific vision to life with creativity</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3>Content Writing</h3>
+                <p>Crafting compelling and engaging content that communicates brand messages effectively and connects with audiences</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <h2>Education</h2>
+            <p>My academic background that shaped my creative journey</p>
+        </div>
+        <div class="education-container">
+            <div class="education-card">
+                <h3>Master in Computer Application</h3>
+                <p><strong>Manipal Institute Of Technology, Manipal</strong></p>
+                <p>2023 – 2025</p>
+            </div>
+            <div class="education-card">
+                <h3>Bachelor in Computer Application</h3>
+                <p><strong>Mahatma Gandhi Memorial College, Udupi</strong></p>
+                <p>2020 – 2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section - FIXED -->
+    <section id="portfolio">
+        <div class="section-header">
+            <h2>My Creative Work</h2>
+            <p>A showcase of my passion and dedication</p>
+        </div>
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="poster">Poster</button>
+            <button class="filter-btn" data-filter="graphic-design">Graphic Design</button>
+            <button class="filter-btn" data-filter="uiux">UI/UX</button>
+            <button class="filter-btn" data-filter="print">Print</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="poster">
+                <div class="gallery-item-placeholder">
+                    <img src="img/C O F F E E.png" alt="Coffee Poster">
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Coffee Poster</h3>
+                    <p>Click to full view</p>
+                    <a href="https://www.behance.net/gallery/236425357/Aesthetic-Coffee-Poster" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="graphic-design">
+                <div class="gallery-item-placeholder">
+                    <img src="img/Monk Mindset.png" alt="Book Cover Page">
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Book Cover Page</h3>
+                    <p>Click to full view</p>
+                    <a href="https://www.behance.net/gallery/235393453/Monk-Mindset-Book-Poster" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="uiux">
+                <div class="gallery-item-placeholder">
+                    <img src="img/Poster - Dine & Design Where Flavor Meets Aesthetics.png" alt="Dine Poster">
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Dine Poster</h3>
+                    <p>Click to full view</p>
+                    <a href="https://www.behance.net/gallery/234967825/Dine-Design" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="print">
+                <div class="gallery-item-placeholder">
+                    <img src="img/Super.png" alt="Branding Of Coffee">
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Branding Of Coffee</h3>
+                    <p>Click to full view</p>
+                    <a href="https://www.behance.net/gallery/236425187/Coffee-Post" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="branding">
+                <div class="gallery-item-placeholder">
+                    <img src="img/Poster - Charu's Closet Sarees for You.png" alt="Fashion Poster">
+                </div>
+                <div class="gallery-overlay">
+                    <h3>Fashion Poster</h3>
+                    <p>Click to full view</p>
+                    <a href="https://www.behance.net/gallery/236401521/Fashion-Poster" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="branding">
+                <div class="gallery-item-placeholder">
+                    <img src="img/juan-burgos-3_XeNGVbTQA-unsplash.jpg" alt="More Work">
+                </div>
+                <div class="gallery-overlay">
+                    <h3>More Work Check Behance</h3>
+                    <p>Click here For More Work</p>
+                    <a href="https://www.behance.net/mithalikunder" class="btn">View More</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section projects-section">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Featured Projects</h2>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-tasks"></i>
-                            </div>
-                            <h3 class="project-title">Work Process Manager</h3>
-                            <p>Employee Management System</p>
-                        </div>
-                        <div class="project-body">
-                            <p>Comprehensive platform with machine learning algorithms for project planning, intelligent task assignment, and employee performance analytics with role-based access control.</p>
-                            <div class="tech-tags mb-3">
-                                <span class="tech-tag"><i class="fab fa-html5"></i>HTML5</span>
-                                <span class="tech-tag"><i class="fab fa-css3-alt"></i>CSS3</span>
-                                <span class="tech-tag"><i class="fab fa-bootstrap"></i>Bootstrap</span>
-                                <span class="tech-tag"><i class="fab fa-laravel"></i>Laravel</span>
-                                <span class="tech-tag"><i class="fas fa-database"></i>MySQL</span>
-                            </div>
-                            <div class="project-features mb-3">
-                                <div><i class="fas fa-rocket text-primary me-2"></i> Real-time collaboration</div>
-                                <div><i class="fas fa-mobile-alt text-success me-2"></i> Multi-device sync</div>
-                                <div><i class="fas fa-shield-alt text-warning me-2"></i> Advanced security</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-header">
-                            <div class="project-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                            </div>
-                            <h3 class="project-title">Smart Stationery Store</h3>
-                            <p>E-commerce Site</p>
-                        </div>
-                        <div class="project-body">
-                            <p>Modern e-commerce solution with product recommendations, advanced search filters, real-time inventory management, and seamless payment integration.</p>
-                            <div class="tech-tags mb-3">
-                                <span class="tech-tag"><i class="fab fa-html5"></i>HTML5</span>
-                                <span class="tech-tag"><i class="fab fa-css3-alt"></i>CSS3</span>
-                                <span class="tech-tag"><i class="fab fa-bootstrap"></i>Bootstrap</span>
-                                <span class="tech-tag"><i class="fab fa-php"></i>PHP</span>
-                                <span class="tech-tag"><i class="fas fa-database"></i>MySQL</span>
-                            </div>
-                            <div class="project-features mb-3">
-                                <div><i class="fas fa-lock text-success me-2"></i> Secure payments</div>
-                                <div><i class="fas fa-search text-primary me-2"></i> Smart search</div>
-                                <div><i class="fas fa-truck text-info me-2"></i> Order tracking</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-header" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <div class="project-icon">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <h3 class="project-title mt-4">Interactive Portfolio</h3>
-                            <p>Personal Showcase Platform</p>
-                        </div>
-                        <div class="project-body">
-                            <div class="tech-tags mb-3">
-                                <span class="tech-tag"><i class="fab fa-html5"></i>HTML5</span>
-                                <span class="tech-tag"><i class="fab fa-js-square"></i>JavaScript</span>
-                                <span class="tech-tag"><i class="fab fa-bootstrap"></i>Bootstrap</span>
-                            </div>
-                            <div class="project-stats mb-3">
-                                <div><i class="fas fa-palette"></i>Attractive Colors</div>
-                                <div><i class="fas fa-mobile-alt"></i> Responsive</div>
-                            </div>
-                            <a href="https://mithali123.github.io/MK-Portfolio/" class="btn-project btn-project-primary" style="width: 100%;">
-                                <i class="fas fa-external-link-alt"></i> View Live Site
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-header" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
-                            <div class="project-icon">
-                                <i class="fas fa-gem"></i>
-                            </div>
-                            <h3 class="project-title">Tira Jewellery</h3>
-                            <p>Luxury E-commerce Experience</p>
-                        </div>
-                        <div class="project-body">
-                            <div class="tech-tags mb-3">
-                                <span class="tech-tag"><i class="fab fa-html5"></i>HTML5</span>
-                                <span class="tech-tag"><i class="fab fa-css3-alt"></i>CSS3</span>
-                                <span class="tech-tag"><i class="fab fa-js-square"></i>JavaScript</span>
-                            </div>
-                            <div class="project-stats mb-3">
-                                <div><i class="fas fa-palette"></i> Premium Design</div>
-                                <div><i class="fas fa-mobile-alt"></i> Responsive</div>
-                            </div>
-                            <a href="https://mithali123.github.io/Tira_Jewellery/" class="btn-project btn-project-primary" style="width: 100%;">
-                                <i class="fas fa-external-link-alt"></i> View Live Site
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="project-card animate-on-scroll">
-                        <div class="project-header" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                            <div class="project-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h3 class="project-title">Smart Contact App</h3>
-                            <p>Android Mobile Application</p>
-                        </div>
-                        <div class="project-body">
-                            <div class="tech-tags mb-3">
-                                <span class="tech-tag"><i class="fab fa-java"></i> Java</span>
-                                <span class="tech-tag"><i class="fas fa-database"></i> SQLite</span>
-                                <span class="tech-tag"><i class="fas fa-mobile-alt"></i> Android Studio</span>
-                            </div>
-                            <div class="project-features mb-3">
-                                <div><i class="fas fa-search text-info me-2"></i> Smart search</div>
-                                <div><i class="fas fa-cloud text-primary me-2"></i> Cloud backup</div>
-                                <div><i class="fas fa-users text-success me-2"></i> Contact groups</div>
-                            </div>
-                            <div class="project-actions">
-                                <a href="https://github.com/Mithali123/"class="btn-project btn-project-secondary">
-                                    <i class="fab fa-github"></i> Code
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Tools Section -->
+    <section id="tools">
+        <div class="section-header">
+            <h2>My Toolbox</h2>
+            <p>Tools and technologies I work with to create magic</p>
+        </div>
+        <div class="tools-container">
+            <div class="tools-category">
+                <h3>Design Tools</h3>
+                <div class="tools-grid">
+                    <div class="tool-item"><i class="fa-solid fa-paintbrush"></i><p>Adobe Photoshop</p></div>
+                    <div class="tool-item"><i class="fa-solid fa-pen-nib"></i><p>Adobe Illustrator</p></div>
+                    <div class="tool-item"><i class="fab fa-figma"></i><p>Figma</p></div>
+                    <div class="tool-item"><i class="fas fa-palette"></i><p>Canva</p></div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- Experience Section -->
-    <section id="experience" class="section experience-section">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Experience & Timeline</h2>
-            <div class="timeline">
-                <div class="timeline-item animate-on-scroll">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h4>Web Development Intern</h4>
-                        <h6>Udupi Web Solution | Jan 2025 - Aug 2025</h6>
-                        <ul>
-                            <li>Developed responsive web interfaces using HTML, CSS, and Bootstrap</li>
-                            <li>Implemented Laravel backend functionality for client portal</li>
-                            <li>Optimized website performance, reducing load time by 40%</li>
-                        </ul>
-                    </div>
+            <div class="tools-category">
+                <h3>Web Development</h3>
+                <div class="tools-grid">
+                    <div class="tool-item"><i class="fab fa-html5"></i><p>HTML5</p></div>
+                    <div class="tool-item"><i class="fab fa-css3-alt"></i><p>CSS3</p></div>
+                    <div class="tool-item"><i class="fab fa-react"></i><p>React</p></div>
+                    <div class="tool-item"><i class="fas fa-bootstrap"></i><p>Bootstrap5</p></div>
+                    <div class="tool-item"><i class="fas fa-database"></i><p>MySQL</p></div>
+                </div>
+            </div>
+            <div class="tools-category">
+                <h3>Video & Motion Graphics</h3>
+                <div class="tools-grid">
+                    <div class="tool-item"><i class="fas fa-film"></i><p>Motion Graphics</p></div>
+                    <div class="tool-item"><i class="fas fa-video"></i><p>Video Editing</p></div>
+                    <div class="tool-item"><i class="fas fa-mobile-alt"></i><p>InShot</p></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="contact-card animate-on-scroll">
-                        <div class="row">
-                            <div class="col-md-4 mb-4 mb-md-0">
-                                <div class="contact-item">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <h6>Email</h6>
-                                    <a href="mailto:mithali.kunder17@gmail.com">mithali.kunder17@gmail.com</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-4 mb-md-0">
-                                <div class="contact-item">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-phone-alt"></i>
-                                    </div>
-                                    <h6>Phone</h6>
-                                    <a href="tel:+91 7483959076">+91 7483959076</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="contact-item">
-                                    <div class="contact-icon">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <h6>Location</h6>
-                                    <a href="#">Udupi, Karnataka, India</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/in/mithali-kunder/"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/Mithali123/"><i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
+    <section id="contact">
+        <div class="section-header">
+            <h2>Get in Touch</h2>
+            <p>I'd love to hear from you!</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:mithali.kunder8@gmail.com">mithali.kunder8@gmail.com</a>
                 </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Phone</h3>
+                    <a href="tel:+917483959076">+917483959076</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <a href="#">India</a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/mithali-kunder/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.behance.net/mithalikunder"><i class="fab fa-behance"></i></a>
+                <a href="https://github.com/Mithali123"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-4" style="background: var(--secondary);">
-        <div class="container text-center">
-            <p class="mb-0" style="color: var(--text-muted);">© 2025 Mithali Kunder. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 Mithali Kunder. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript -->
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.padding = '10px 0';
-                navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.padding = '20px 0';
-                navbar.style.boxShadow = 'none';
-            }
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filter = button.dataset.filter;
+
+                galleryItems.forEach(item => {
+                    if(filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
                 });
             });
         });
-
-        // Animation on scroll
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementPosition < windowHeight - 100) {
-                    element.classList.add('animate');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
